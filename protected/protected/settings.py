@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Custom settings.
+# Authentication settings.
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -133,8 +133,7 @@ REST_FRAMEWORK = {
     )
 }
 
-
-# Note, all default values are left commented out for documentation purposes.
+# NOTE: all default values are left commented out for documentation purposes.
 SIMPLE_JWT = {
     # 'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     # 'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
