@@ -2,11 +2,9 @@
 """
 from django.conf.urls import url, include
 
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView, TokenRefreshView
-)
+from rest_framework_simplejwt.views import TokenRefreshView
 
-from api.views import Me
+from api.views import Me, TokenObtainPairView
 
 
 urlpatterns = [
