@@ -8,3 +8,6 @@ deps: venv
 test: deps
 	venv/bin/python manage.py test
 
+run: deps
+	venv/bin/python manage.py runserver
+
