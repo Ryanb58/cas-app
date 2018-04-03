@@ -1,4 +1,4 @@
-"""client URL Configuration
+"""protected URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -15,16 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-import django_cas_ng.views
-from django.contrib.auth.decorators import login_required
-
-from .views import GreetingView
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/login$', django_cas_ng.views.login, name='cas_ng_login'),
-    url(r'^accounts/logout$', django_cas_ng.views.logout, name='cas_ng_logout'),
-    url(r'^accounts/callback$', django_cas_ng.views.callback, name='cas_ng_proxy_callback'),
-    url(r'^about/$', login_required(GreetingView.as_view(greeting="G'day"))),
 ]
