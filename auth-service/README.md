@@ -1,0 +1,1 @@
+This service issues a JWT to the client if they are authenticated via the CAS.
