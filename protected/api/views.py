@@ -9,7 +9,6 @@ from api.serializers import TokenUserSerializer
 
 class Me(APIView):
     permission_classes = (IsAuthenticated,)
-    serializer_classes = ()
 
     def get(self, request):
         return Response(TokenUserSerializer(request.user).data)
