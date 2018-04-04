@@ -141,7 +141,7 @@ SIMPLE_JWT = {
     # 'BLACKLIST_AFTER_ROTATION': True,
 
     # TODO: must be synchronized with auth-service application.
-    'SIGNING_KEY': SECRET_KEY,
+    'SIGNING_KEY': '=*yh0q!d#^348p8arq2zi^_3lz$jf*=b)igcq4(l7zf2+ozmgk',
 
     # 'ALGORITHM': 'HS256',
     # 'VERIFYING_KEY': None,

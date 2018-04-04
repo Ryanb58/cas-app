@@ -6,20 +6,6 @@ from rest_framework_simplejwt.authentication \
 from rest_framework_simplejwt.models import TokenUser as BaseTokenUser
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.exceptions import InvalidToken
-from rest_framework_simplejwt.tokens import RefreshToken as BaseRefreshToken
-
-
-class RefreshToken(BaseRefreshToken):
-    """
-    Token that includes additional fields.
-    """
-
-    @classmethod
-    def for_user(cls, user):
-        """Add additional fields to JWT."""
-        token = super().for_user(user)
-        token['username'] = user.username
-        return token
 
 
 class TokenUser(BaseTokenUser):
