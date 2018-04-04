@@ -88,8 +88,10 @@ class CAS3Client(object):
         url = pathjoin(self.server_url, 'login')
 
         r = s.get(url, params={'service': self.service_url})
-        csrftoken = s.cookies['csrftoken']
+        if r.status_code != 200:
+            return
 
+        csrftoken = s.cookies['csrftoken']
         payload = {
             'csrfmiddlewaretoken': csrftoken,
             'username': username,
