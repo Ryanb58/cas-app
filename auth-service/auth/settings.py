@@ -126,6 +126,7 @@ STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'django_cas_ng.backends.CASBackend',
+    'api.authentication.CASPostBackend',
 )
 
 CAS_SERVER_URL = 'http://localhost:8000/cas/'
