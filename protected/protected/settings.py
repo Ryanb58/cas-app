@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd party applications.
+    'django_uwsgi',
     'rest_framework',
 
     # Built-in applications (part of project).
@@ -123,7 +124,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/protected/'
+STATIC_ROOT = '/tmp/.static'
 
 # Authentication settings.
 

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cd /app
+
+python3 manage.py migrate
+python3 manage.py collectstatic --noinput
+
+export UWSGI_UID=${UWSGI_UID:-nobody}
+export UWSGI_GID=${UWSGI_GID:-nogroup}
+export UWSGI_MODULE=${UWSGI_MODULE:-authserv.wsgi}
+export UWSGI_WORKERS=${UWSGI_WORKERS:-3}
+export UWSGI_CHEAPER=${UWSGI_CHEAPER:-1}
+
+python3 manage.py runuwsgi

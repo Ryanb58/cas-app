@@ -1,7 +1,8 @@
-requests
 django==1.11
+django-uwsgi
 django-rest-framework
 djangorestframework-simplejwt
 django-cas-ng
+requests
 coreapi
 lxml

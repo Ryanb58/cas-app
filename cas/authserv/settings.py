@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_uwsgi',
     'mama_cas',
 ]
 
@@ -120,6 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/tmp/.static'
 
 MAMA_CAS_ATTRIBUTE_CALLBACKS = [
     'authserv.authentication.user_info',

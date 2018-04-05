@@ -38,9 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party applications.
     'rest_framework',
-
+    'django_uwsgi',
     'django_cas_ng',
+
+    # Built-in applications (part of project).
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +125,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/auth/'
+STATIC_ROOT = '/tmp/.static'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -129,7 +134,7 @@ AUTHENTICATION_BACKENDS = (
     'api.authentication.CASPostBackend',
 )
 
-CAS_SERVER_URL = 'http://localhost:8000/cas/'
+CAS_SERVER_URL = 'http://cas:8000/cas/'
 
 # NOTE: all default values are left commented out for documentation purposes.
 SIMPLE_JWT = {

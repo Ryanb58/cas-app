@@ -4,20 +4,34 @@ services:
   nginx:
     container_name: nginx
     image: nginx:1.13-alpine
+    volumes:
+      - "./nginx/api.conf:/etc/nginx/conf.d/api.conf:ro"
+    depends_on:
+      - auth
+      - protected
     ports:
       - "8000:80"
-  
+
   auth:
     container_name: auth
     build:
       context: auth-service
+    command: /start
+    volumes:
+      - "./auth-service:/app"
 
   protected:
     container_name: protected
     build:
       context: protected
+    command: /start
+    volumes:
+      - "./protected:/app"
 
   cas:
     container_name: cas
     build:
       context: cas
+    command: /start
+    volumes:
+      - "./cas:/app"

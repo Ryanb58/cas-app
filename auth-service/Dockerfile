@@ -1,8 +1,8 @@
 FROM alpine:3.6
 MAINTAINER btimby@smartfile.com
 
-RUN apk --update add python3 python3-dev uwsgi-python3 build-base libxml2-dev \
-                     libxslt-dev
+RUN apk --update add python3 python3-dev uwsgi-python3 build-base libxml2 \
+                     libxslt libxml2-dev libxslt-dev
 
 ADD . /app
 ADD start /start
