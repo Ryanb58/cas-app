@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.13-alpine
+    ports:
+      - "8000:80"
+  
+  auth:
+    container_name: auth
+    build:
+      context: auth-service
+
+  protected:
+    container_name: protected
+    build:
+      context: protected
+
+  cas:
+    container_name: cas
+    build:
+      context: cas
