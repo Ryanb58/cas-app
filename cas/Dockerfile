@@ -1,7 +1,7 @@
 FROM alpine:3.6
 MAINTAINER btimby@smartfile.com
 
-RUN apk --update add python3 uwsgi-python3
+RUN apk --update add git python3 uwsgi-python3
 
 ADD . /app
 ADD start /start

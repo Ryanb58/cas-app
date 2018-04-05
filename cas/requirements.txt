@@ -1,4 +1,4 @@
 django==1.11
-django-uwsgi
 django-mama-cas
 
+git+https://github.com/btimby/django-uwsgi.git@f8930c5f37532e3c20a49adfd3042c2d26d81fc6

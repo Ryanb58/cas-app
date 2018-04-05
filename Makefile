@@ -1,13 +1,16 @@
-DOCKERCOMPOSE=docker-compose -f dev.yml
+DOCKER_COMPOSE=docker-compose -f dev.yml
 
 build:
-	$(DOCKERCOMPOSE) build
+	$(DOCKER_COMPOSE) build
+
+rebuild:
+	$(DOCKER_COMPOSE) build --no-cache
 
 run:
-	$(DOCKERCOMPOSE) up
+	$(DOCKER_COMPOSE) up
 
 up: run
 
 clean:
-	$(DOCKERCOMPOSE) down
+	$(DOCKER_COMPOSE) down
 

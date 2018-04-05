@@ -45,11 +45,11 @@ urlpatterns = [
     url(r'^$', generic.RedirectView.as_view(
          url='/api/', permanent=False), name='home'),
     url(r'^api/$', get_schema_view()),
-    url(r'^api/auth/', include(
+    url(r'^api/', include(
         'rest_framework.urls', namespace='rest_framework')),
 
-    url(r'^api/auth/token/obtain/$', TokenObtainPairView.as_view()),
-    url(r'^api/auth/token/refresh/$', TokenRefreshView.as_view()),
+    url(r'^api/token/obtain/$', TokenObtainPairView.as_view()),
+    url(r'^api/token/refresh/$', TokenRefreshView.as_view()),
     url(r'^api/token/verify/$', TokenVerifyView.as_view(), name='token_verify'),
 
     url(r'^api/echo/$', EchoView.as_view())
