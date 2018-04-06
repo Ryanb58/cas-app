@@ -22,35 +22,38 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from rest_framework import views, serializers, status
+from rest_framework import views, serializers, status, routers
 from rest_framework.response import Response
 
-from api.views import TokenObtainPairView
+from api.views import (
+    TokenObtainPairView, UserViewSet, GroupViewSet, RealmViewSet,
+    ExternalAuthenticationViewSet, OrganizationViewSet
+)
 
 
-class MessageSerializer(serializers.Serializer):
-    message = serializers.CharField()
+api_router = routers.DefaultRouter()
 
-
-class EchoView(views.APIView):
-    def post(self, request, *args, **kwargs):
-        serializer = MessageSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        return Response(
-            serializer.data, status=status.HTTP_201_CREATED)
+api_router.register(r'users', UserViewSet, base_name='user')
+api_router.register(
+    r'organizations', OrganizationViewSet, base_name='organization')
+api_router.register(r'groups', GroupViewSet, base_name='group')
+api_router.register(r'realms', RealmViewSet, base_name='realm')
+api_router.register(
+    r'external_authentication', ExternalAuthenticationViewSet,
+    base_name='external_authentication')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^$', generic.RedirectView.as_view(
          url='/api/', permanent=False), name='home'),
-    url(r'^api/$', get_schema_view()),
-    url(r'^api/', include(
+    url(r'^api/auth/$', get_schema_view()),
+    url(r'^api/auth/', include(
         'rest_framework.urls', namespace='rest_framework')),
 
-    url(r'^api/token/obtain/$', TokenObtainPairView.as_view()),
-    url(r'^api/token/refresh/$', TokenRefreshView.as_view()),
-    url(r'^api/token/verify/$', TokenVerifyView.as_view(), name='token_verify'),
+    url(r'^api/auth/token/obtain/$', TokenObtainPairView.as_view()),
+    url(r'^api/auth/token/refresh/$', TokenRefreshView.as_view()),
+    url(r'^api/auth/token/verify/$', TokenVerifyView.as_view(), name='token_verify'),
 
-    url(r'^api/echo/$', EchoView.as_view())
+    url(r'^api/auth/', include((api_router.urls, 'api'))),
 ]
