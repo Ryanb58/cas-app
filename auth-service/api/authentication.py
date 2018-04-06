@@ -92,7 +92,7 @@ class CASTicketBackend(BaseExternalBackend):
 
     def _authenticate(self, realm, organization, auth_method, ticket=None,
                       service=None):
-        client = get_cas_client(service, auth_method.url)
+        client = get_cas_client(auth_method.url, service)
         username, attributes, pgtiou = client.verify_ticket(ticket)
 
         if not username:
@@ -134,7 +134,12 @@ class CASPostBackend(CASTicketBackend):
             return
 
         ticket = r.headers['Location']
-        ticket = TICKET_RE.search(ticket).groups()[0]
+        ticket = TICKET_RE.search(ticket)
+
+        if ticket is None:
+            return
+        
+        ticket = ticket.groups()[0]
 
         return super()._authenticate(
             realm, organization, auth_method, ticket=ticket, service=service)

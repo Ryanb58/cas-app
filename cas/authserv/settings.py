@@ -25,7 +25,7 @@ SECRET_KEY = 'bb#v#$u-sq#j^hd%!q)j+=7##ue53bf*r3pk$3*h62t-g-2(qz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'authserv.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': '/tmp/db/db.sqlite3',
     }
 }
 

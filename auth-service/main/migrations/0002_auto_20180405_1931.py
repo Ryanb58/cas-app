@@ -21,7 +21,12 @@ class Migration(migrations.Migration):
             DEFAULT_REALM_ID.replace('-', ''),
         ]),
         migrations.RunSQL([
-            "INSERT INTO main_organization (id, name) VALUES ('%s', 'default');" %
-            DEFAULT_ORGANIZATION_ID.replace('-', ''),
+            "INSERT INTO main_organization "
+            "(id, realm_id, name) "
+            "VALUES ('%s', '%s', 'default');" %
+            (
+                DEFAULT_ORGANIZATION_ID.replace('-', ''),
+                DEFAULT_REALM_ID.replace('-', '')
+            ),
         ]),
     ]

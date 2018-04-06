@@ -2,7 +2,10 @@
 
 cd /app
 
+mkdir -f db
 python3 manage.py migrate
+chmod -R a+rw db
+
 python3 manage.py collectstatic --noinput
 
 export UWSGI_UID=${UWSGI_UID:-nobody}
