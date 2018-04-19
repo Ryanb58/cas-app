@@ -101,7 +101,11 @@ class CASTicketBackend(BaseExternalBackend):
         # Create shadow user:
         organization = Organization.objects.get(realm=realm)
         user, created = User.objects.get_or_create(
-            realm=realm, organization=organization)
+            realm=realm, organization=organization, username=username)
+
+        for attr in ('email', ):
+            setattr(user, attr, attributes[attr])
+        user.save()
 
         if created:
             user.auth_method = auth_method
