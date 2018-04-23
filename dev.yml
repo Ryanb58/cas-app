@@ -33,5 +33,7 @@ services:
     build:
       context: cas
     command: /start
+    ports:
+      - 8001:8000
     volumes:
       - "./cas:/app"

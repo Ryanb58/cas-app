@@ -40,13 +40,14 @@ class JWTTokenUserAuthentication(BaseJWTTokenUserAuthentication):
         return TokenUser(validated_token)
 
     def get_header(self, request):
+        """Checks header and cookie for auth."""
         header = super().get_header(request)
 
         if header:
             return header
 
         # Check the cookie...
-        cookie = request.COOKIES[COOKIE_NAME]
+        cookie = request.COOKIES.get(COOKIE_NAME, None)
 
         if cookie:
             header = 'Bearer %s' % cookie
