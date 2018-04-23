@@ -12,5 +12,6 @@ export UWSGI_UID=${UWSGI_UID:-nobody}
 export UWSGI_GID=${UWSGI_GID:-nogroup}
 export UWSGI_MODULE=${UWSGI_MODULE:-auth.wsgi}
 export UWSGI_WORKERS=${UWSGI_WORKERS:-1}
+export UWSGI_HONOUR_STDIN=true
 
 python3 manage.py runuwsgi

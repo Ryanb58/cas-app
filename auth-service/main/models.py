@@ -36,7 +36,8 @@ class ExternalAuthentication(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     realm = models.ForeignKey(Realm, related_name='auth_methods')
     auth_type = models.IntegerField(choices=AUTH_TYPES.items())
-    url = models.URLField()
+    app_exposed_url = models.URLField()
+    user_exposed_url = models.URLField()
 
 
 class Organization(models.Model):

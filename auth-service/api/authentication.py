@@ -75,7 +75,7 @@ class BaseExternalBackend(ModelBackend):
 
         # If realm does not support this type of authentication, bail out.
         auth_methods = realm.auth_methods.filter(auth_type=self.TYPE)
-        
+
         if len(auth_methods) == 0:
             return
 
@@ -92,7 +92,7 @@ class CASTicketBackend(BaseExternalBackend):
 
     def _authenticate(self, realm, organization, auth_method, ticket=None,
                       service=None):
-        client = get_cas_client(auth_method.url, service)
+        client = get_cas_client(auth_method.app_exposed_url, service)
         username, attributes, pgtiou = client.verify_ticket(ticket)
 
         if not username:
@@ -119,7 +119,7 @@ class CASPostBackend(CASTicketBackend):
     def _authenticate(self, realm, organization, auth_method, username=None,
                       password=None, service=None):
         s = requests.session()
-        url = pathjoin(auth_method.url, 'login')
+        url = pathjoin(auth_method.app_exposed_url, 'login')
 
         r = s.get(url, params={'service': service})
         if r.status_code != 200:
@@ -142,7 +142,7 @@ class CASPostBackend(CASTicketBackend):
 
         if ticket is None:
             return
-        
+
         ticket = ticket.groups()[0]
 
         return super()._authenticate(
