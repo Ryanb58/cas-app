@@ -25,9 +25,11 @@ from rest_framework_simplejwt.views import (
 from rest_framework import views, serializers, status, routers
 from rest_framework.response import Response
 
+import django_cas_ng.views
+
 from api.views import (
     TokenObtainPairView, UserViewSet, GroupViewSet, RealmViewSet,
-    ExternalAuthenticationViewSet, OrganizationViewSet
+    ExternalAuthenticationViewSet, OrganizationViewSet, login
 )
 
 
@@ -57,4 +59,8 @@ urlpatterns = [
         name='token_verify'),
 
     url(r'^api/auth/', include((api_router.urls, 'api'))),
+
+    url(r'^accounts/login$', login, name='cas_ng_login'),
+    # url(r'^accounts/login$', django_cas_ng.views.login, name='cas_ng_login'),
+    url(r'^accounts/logout$', django_cas_ng.views.logout, name='cas_ng_logout'),
 ]

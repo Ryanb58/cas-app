@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 
+import django_cas_ng.views
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -59,3 +60,14 @@ class ExternalAuthenticationViewSet(viewsets.ModelViewSet):
     serializer_class = ExternalAuthenticationSerializer
     queryset = ExternalAuthentication.objects.all()
     permission_classes = [IsAdminUser]
+
+
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+
+@csrf_exempt
+@require_http_methods(["GET", "POST"])
+def login(request, next_page=None, required=False):
+    from ipdb import set_trace;set_trace()
+    return django_cas_ng.views.login(
+        request, next_page=next_page, required=required)
