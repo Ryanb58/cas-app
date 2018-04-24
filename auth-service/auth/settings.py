@@ -145,7 +145,7 @@ REST_FRAMEWORK = {
 }
 
 CAS_CREATE_USER = True
-CAS_SERVER_URL = 'http://localhost:8002/cas/'
+CAS_SERVER_URL = 'http://localhost:8080/cas/'
 
 # NOTE: all default values are left commented out for documentation purposes.
 SIMPLE_JWT = {
@@ -173,3 +173,4 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'main.User'
+LOGIN_URL = '/api/auth/login/'

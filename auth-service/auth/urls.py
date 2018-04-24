@@ -60,7 +60,6 @@ urlpatterns = [
 
     url(r'^api/auth/', include((api_router.urls, 'api'))),
 
-    url(r'^accounts/login/$', login, name='cas_ng_login'),
-    # url(r'^accounts/login$', django_cas_ng.views.login, name='cas_ng_login'),
-    url(r'^accounts/logout/$', logout, name='cas_ng_logout'),
+    url(r'^api/auth/login/$', login, name='cas_ng_login'),
+    url(r'^api/auth/logout/$', logout, name='cas_ng_logout'),
 ]
