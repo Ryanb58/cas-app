@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'protected.middleware.JWTAuthMiddleware',
 ]
 
 ROOT_URLCONF = 'protected.urls'
@@ -134,6 +135,12 @@ REST_FRAMEWORK = {
         'api.authentication.JWTTokenUserAuthentication',
     )
 }
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'protected.backends.JWTAuthBackend',
+)
+
 
 # NOTE: all default values are left commented out for documentation purposes.
 SIMPLE_JWT = {

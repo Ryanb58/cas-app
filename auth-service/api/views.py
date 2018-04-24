@@ -166,18 +166,18 @@ def login(request, next_page=None, required=False):
                 message = settings.CAS_LOGIN_MSG % name
                 messages.success(request, message)
 
+            # Get the response we are about to return.
             response = HttpResponseRedirect(next_page)
 
-            from ipdb import set_trace;set_trace()
-
+            # Set the cookie to the JWT.
             refresh = RefreshToken.for_user(user)
-
             data = {
                 'refresh': text_type(refresh),
                 'access': text_type(refresh.access_token),
             }
             response.set_cookie('auth_jwt', data['access'])
             return response
+
         elif settings.CAS_RETRY_LOGIN or required:
             return HttpResponseRedirect(client.get_login_url())
         else:

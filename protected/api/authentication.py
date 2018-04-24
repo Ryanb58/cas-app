@@ -19,6 +19,8 @@ class TokenUser(BaseTokenUser):
     """
     Extended TokenUser that contains username.
     """
+    backend = ''
+    is_authenticated = True
 
     @cached_property
     def username(self):
