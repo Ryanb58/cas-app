@@ -33,8 +33,21 @@ base64.b64decode("eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTI0NDk4OTkyLCJqdGkiOi
 
 Open Postman:
 GET http://localhost:8000/api/protected/me/
-Authorization =  Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTI0NDk4OTkyLCJqdGkiOiJlODdkZDE4MDkxZjg0N2FkYjlmMzlhMzllNjE2NmNhYiIsInVzZXJfaWQiOiIzM2QzZTg0Ny1jMGI3LTQwMTItOTEwYS02ODgyMTQyMTViMjciLCJ1c2VybmFtZSI6InJ5YW5iNTgifQ.XpKpbSmf1u6Qm2LL5MvY1jaulGTdsQ7Vu_pVU5PfBQk
+Authorization =  Bearer eyJ0eXAiOiJKV1QiLCJhbGciO       iJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTI0NDk4OTkyLCJqdGkiOiJlODdkZDE4MDkxZjg0N2FkYjlmMzlhMzllNjE2NmNhYiIsInVzZXJfaWQiOiIzM2QzZTg0Ny1jMGI3LTQwMTItOTEwYS02ODgyMTQyMTViMjciLCJ1c2VybmFtZSI6InJ5YW5iNTgifQ.XpKpbSmf1u6Qm2LL5MvY1jaulGTdsQ7Vu_pVU5PfBQk
 
 
 
 ## Web Auth:
+
+head to http://localhost:8000
+
+Redirected to auth service.
+
+Redirected to CAS service.
+
+Login with
+Username: ryanb58
+Password: testing123
+
+Redirected back to auth.
+redirected back to protected resource.
