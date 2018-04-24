@@ -80,7 +80,7 @@ from django.contrib.auth import (
     authenticate
 )
 from api.authentication import RefreshToken
-
+from django_cas_ng.views import clean_sessions
 
 from django_cas_ng.models import SessionTicket
 
@@ -186,3 +186,16 @@ def login(request, next_page=None, required=False):
         if settings.CAS_STORE_NEXT:
             request.session['CASNEXT'] = next_page
         return HttpResponseRedirect(client.get_login_url())
+
+from django.contrib.auth import logout
+
+
+@require_http_methods(["GET"])
+def logout(request, next_page=None):
+    if not next_page:
+        next_page = request.GET.get('next')
+    #response = django_cas_ng.views.logout(request, next_page)
+    response = HttpResponseRedirect(next_page)
+    response.delete_cookie('auth_jwt')
+    response.delete_cookie(settings.SESSION_COOKIE_NAME)
+    return response

@@ -19,28 +19,15 @@ def login(request, next_page=None, required=False):
             return HttpResponseRedirect(next_page)
         return HttpResponseRedirect('/')
 
-    auth_service_url = 'http://localhost:8001/accounts/login?next=http://localhost:8000/'
-
-    # if not next_page:
-    #     next_page = '/'
+    auth_service_url = 'http://localhost:8001/accounts/login/?next=http://localhost:8000/'
 
     return HttpResponseRedirect(auth_service_url)
 
-    # backward compability for django < 2.0
-    # is_user_authenticated = False
 
-    # if sys.version_info >= (3, 0):
-    #     bool_type = bool
-    # else:
-    #     bool_type = types.BooleanType
-
-    # if isinstance(request.user.is_authenticated, bool_type):
-    #     is_user_authenticated = request.user.is_authenticated
-    # else:
-    #     is_user_authenticated = request.user.is_authenticated()
-
-    # if is_user_authenticated:
-    #     return HttpResponseRedirect(next_page)
+@login_required
+def logout(request):
+    auth_service_url = 'http://localhost:8001/accounts/logout/?next=http://localhost:8000/'
+    return HttpResponseRedirect(auth_service_url)
 
 
 @login_required
