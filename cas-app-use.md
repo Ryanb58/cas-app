@@ -10,7 +10,7 @@ make run
 Create an Realm & ExternalAuthentication object.
 Realm: Default
 
-Navigate to http://localhost:8000/api/auth/token/obtain/
+Navigate to http://localhost:8001/api/auth/token/obtain/
 Login
 
 Username: ryanb58
@@ -32,7 +32,7 @@ base64.b64decode("eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTI0NDk4OTkyLCJqdGkiOi
 ```
 
 Open Postman:
-GET http://localhost:8000/api/protected/me/
+GET http://localhost:8000/api/me/
 Authorization =  Bearer eyJ0eXAiOiJKV1QiLCJhbGciO       iJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTI0NDk4OTkyLCJqdGkiOiJlODdkZDE4MDkxZjg0N2FkYjlmMzlhMzllNjE2NmNhYiIsInVzZXJfaWQiOiIzM2QzZTg0Ny1jMGI3LTQwMTItOTEwYS02ODgyMTQyMTViMjciLCJ1c2VybmFtZSI6InJ5YW5iNTgifQ.XpKpbSmf1u6Qm2LL5MvY1jaulGTdsQ7Vu_pVU5PfBQk
 
 
